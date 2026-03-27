@@ -240,7 +240,7 @@ export default function Certifications() {
           className={`appear ${headerVisible ? "visible" : ""}`}
           style={{ marginBottom: 52 }}
         >
-          <SectionLabel>// Certifications</SectionLabel>
+          <SectionLabel>{"// Certifications"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",
@@ -260,7 +260,7 @@ export default function Certifications() {
               letterSpacing: "0.06em",
             }}
           >
-            find ~/certs -name "*.cert" | xargs verify --status
+            {'find ~/certs -name "*.cert" | xargs verify --status'}
           </p>
         </div>
 

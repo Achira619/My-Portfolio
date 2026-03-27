@@ -56,10 +56,10 @@ export const skillCategories = [
 export const conceptBadges = [
   { label: "OOP",             pkg: "oop-patterns"   },
   { label: "Agile / SDLC",   pkg: "scrum-master"   },
-  { label: "REST APIs",       pkg: "openapi-3"      },
-  { label: "Monitoring",      pkg: "prometheus"     },
+  //{ label: "REST APIs",       pkg: "openapi-3"      },
+ // { label: "Monitoring",      pkg: "prometheus"     },
   { label: "CI/CD Concepts",  pkg: "gh-actions"     },
   { label: "Cybersecurity",   pkg: "sec-baseline"   },
   { label: "Bash Scripting",  pkg: "bash-5.2"       },
-  { label: "TCP/IP",          pkg: "networking"     },
+ // { label: "TCP/IP",          pkg: "networking"     },
 ];

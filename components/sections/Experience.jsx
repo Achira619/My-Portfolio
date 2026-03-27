@@ -174,7 +174,7 @@ export default function Experience() {
           className={`appear ${headerVisible ? "visible" : ""}`}
           style={{ marginBottom: 52 }}
         >
-          <SectionLabel>// Experience & Activities</SectionLabel>
+          <SectionLabel>{"// Experience & Activities"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",

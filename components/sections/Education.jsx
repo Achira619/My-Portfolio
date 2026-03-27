@@ -296,7 +296,7 @@ export default function Education() {
           className={`appear ${headerVisible ? "visible" : ""}`}
           style={{ marginBottom: 52 }}
         >
-          <SectionLabel>// Education</SectionLabel>
+          <SectionLabel>{"// Education"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",
@@ -316,7 +316,7 @@ export default function Education() {
               letterSpacing: "0.06em",
             }}
           >
-            find /edu -type d -name "*.degree" | sort -r
+            {'find /edu -type d -name "*.degree" | sort -r'}
           </p>
         </div>
 

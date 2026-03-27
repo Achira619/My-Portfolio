@@ -21,7 +21,7 @@ export default function Skills() {
           className={`appear ${visible ? "visible" : ""}`}
           style={{ textAlign: "center", marginBottom: 56 }}
         >
-          <SectionLabel center>// Technical Skills</SectionLabel>
+          <SectionLabel center>{"// Technical Skills"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",

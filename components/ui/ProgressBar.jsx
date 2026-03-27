@@ -45,7 +45,7 @@ export default function ProgressBar({ name, level, color, pkg, animate }) {
             </span>
           )}
         </div>
-        <span
+        {/* <span
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: 10,
@@ -53,11 +53,11 @@ export default function ProgressBar({ name, level, color, pkg, animate }) {
           }}
         >
           {level}%
-        </span>
+        </span> */}
       </div>
 
       {/* htop-style bar */}
-      <div
+      {/* <div
         style={{
           height: 6,
           background: "rgba(0,255,65,0.07)",
@@ -75,7 +75,7 @@ export default function ProgressBar({ name, level, color, pkg, animate }) {
             transition: "width 1.5s cubic-bezier(0.22, 1, 0.36, 1)",
           }}
         />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -66,7 +66,7 @@ export default function Contact() {
         >
           {/* ── Left ── */}
           <div className={`appear ${visible ? "visible" : ""}`}>
-            <SectionLabel>// Contact</SectionLabel>
+            <SectionLabel>{"// Contact"}</SectionLabel>
             <h2
               style={{
                 fontFamily: "var(--font-disp)",

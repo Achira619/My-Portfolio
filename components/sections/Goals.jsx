@@ -96,7 +96,7 @@ export default function Goals() {
           className={`appear ${headerVisible ? "visible" : ""}`}
           style={{ textAlign: "center", marginBottom: 56 }}
         >
-          <SectionLabel center>// Career Vision</SectionLabel>
+          <SectionLabel center>{"// Career Vision"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",

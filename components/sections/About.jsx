@@ -39,7 +39,7 @@ export default function About() {
         >
           {/* ── Left: copy ── */}
           <div className={`appear ${visible ? "visible" : ""}`}>
-            <SectionLabel>// About Me</SectionLabel>
+            <SectionLabel>{"// About Me"}</SectionLabel>
 
             <h2
               style={{

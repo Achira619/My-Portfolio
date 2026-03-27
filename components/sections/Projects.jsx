@@ -302,7 +302,7 @@ export default function Projects() {
           className={`appear ${headerVisible ? "visible" : ""}`}
           style={{ marginBottom: 52 }}
         >
-          <SectionLabel>// Projects</SectionLabel>
+          <SectionLabel>{"// Projects"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",

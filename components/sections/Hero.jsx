@@ -17,8 +17,8 @@ const BOOT_LINES = [
   { text: "[    0.124582] ACPI: IRQ0 used by override.", color: "var(--muted)", delay: 200 },
   { text: "[    0.312841] Loading achira.ko module...", color: "var(--muted)", delay: 450 },
   { text: "[    0.500000] skills.service: OK", color: "var(--g)", delay: 700 },
-  { text: "[    0.630021] devops.service: OK", color: "var(--g)", delay: 900 },
-  { text: "[    0.782300] reliability.service: OK", color: "var(--g)", delay: 1100 },
+  { text: "[    0.630021] devops.service: On learning..", color: "var(--g)", delay: 900 },
+  { text: "[    0.782300] reliability.service: Reserching..", color: "var(--g)", delay: 1100 },
   { text: "[    1.000000] System ready. Welcome, recruiter.", color: "var(--g)", delay: 1400 },
 ];
 
@@ -204,7 +204,7 @@ export default function Hero() {
           }}
         >
           <span style={{ color: "var(--g3)" }}># </span>
-          Building scalable, reliable, and efficient systems for the modern world.
+          Uphold scalable, reliable, and efficient systems for the modern world.
         </p>
 
         {/* ── Buttons ── */}
@@ -229,7 +229,7 @@ export default function Hero() {
           >
             <span>ssh</span> contact@achira
           </button>
-          <a className="btn btn-ghost" href="/resume.pdf" download>
+          <a className="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noreferrer">
             <span>curl</span> resume.pdf
           </a>
         </div>

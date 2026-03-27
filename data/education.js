@@ -13,8 +13,6 @@ export const education = [
     location: "Colombo, Sri Lanka",
     path: "/edu/university/iit",
     highlights: [
-      "Specialising in Software Engineering & Systems",
-      "Agile SDLC workshop participant",
       "Active project contributor — Corpovinculo",
     ],
     modules: [
@@ -26,6 +24,7 @@ export const education = [
       "Web Technologies",
       "Software Project Management",
       "Python Programming",
+      "Mathematics for Computing",
     ],
     color: "var(--g)",
   },
@@ -45,8 +44,14 @@ export const education = [
     "Another important detail",
   ],
   modules: [
-    "Module 1",
-    "Module 2",
+    "introduction to programming principles",
+    "computer programming",
+    "Database Systems",
+    "Desinging inovative solutions",
+    "mathematics for computing",
+    "digital skills",
+    "Digital circuits and logic design",
+    "esssential communication skills",
   ],
   color: "var(--g)", // match theme
 },
@@ -57,7 +62,7 @@ export const education = [
     institution: "Trinity College Kandy ",          // ← update this
     affiliation: "Primary and secondary education", // ← update this
     degree: "G.C.E Advanced Level examinations", // ← update this
-    period: "2019 — 2022",
+    period: "2009 — 2022",
     status: "completed",
     gpa: null,
     location: "Kandy, Sri Lanka",
@@ -67,7 +72,7 @@ export const education = [
       "Held tresure of the social service union ",
       "Went to Singapore, Dubai and Malaysia for school dancing events",
     ],
-    modules: ["Political Science", "Economics", "Media "],
+    modules: ["Political Science", "Economics", "Media ","civics","History"],
     color: "var(--cyan)",
   },
 ];

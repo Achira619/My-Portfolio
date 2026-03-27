@@ -29,4 +29,32 @@ export const experiences = [
       "Contributed to event logistics and overall attendee experience",
     ],
   },
+  {
+    id: "tck-social-service-treasurer",
+    type: "Leadership",
+    service: "social-service-union-treasurer.service",
+    title: "Treasurer",
+    org: "Social Service Union, Trinity College Kandy",
+    period: "2022-2023",
+    color: "var(--amber)",
+    points: [
+      "Held office as Treasurer in the Social Service Union",
+      "Managed funds and tracked budgets for service-related activities",
+      "Supported planning and execution of student-led community projects",
+    ],
+  },
+  {
+    id: "tck-national-drum-dance",
+    type: "Member",
+    service: "national-drum-dance-troupe.service",
+    title: "National Drum and Dance Troupe Member",
+    org: "Trinity College Kandy",
+    period: "2018-2023",
+    color: "#00e5ff",
+    points: [
+      "Member of the National Drum and Dance Troupe",
+      "Performed in school and public cultural events",
+      "Built discipline, teamwork, and stage confidence through long-term participation",
+    ],
+  },
 ];

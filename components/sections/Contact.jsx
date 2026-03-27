@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import useIntersection from "@/hooks/useIntersection";
 import SectionLabel from "@/components/ui/SectionLabel";
 
@@ -8,45 +8,94 @@ const CONTACT_LINKS = [
   {
     icon: "✉",
     label: "Email",
-    display: "achira.medagedara@gmail.com",
-    href: "mailto:achira.medagedara@gmail.com",
+    display: "achiramedagedara0@gmail.com",
+    href: "mailto:achiramedagedara0@gmail.com",
     cmd: "mail -s 'Opportunity'",
   },
   {
     icon: "⊙",
     label: "GitHub",
-    display: "github.com/achira-medagedara",
-    href: "https://github.com",
+    display: "github.com/Achira619",
+    href: "https://github.com/Achira619",
     cmd: "git clone",
   },
   {
     icon: "in",
     label: "LinkedIn",
     display: "linkedin.com/in/achira-medagedara",
-    href: "https://linkedin.com",
+    href: "http://www.linkedin.com/in/achira-medagedara",
     cmd: "curl -L",
   },
 ];
 
 export default function Contact() {
   const [ref, visible] = useIntersection(0.15);
+  const inputRefs = useRef({});
 
   const [form, setForm]   = useState({ name: "", email: "", message: "" });
   const [sent, setSent]   = useState(false);
   const [loading, setLoad] = useState(false);
+  const [sendError, setSendError] = useState("");
+  const [activeField, setActiveField] = useState("name");
 
   const handleChange = (e) =>
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setSendError("");
     setLoad(true);
-    setTimeout(() => {
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const payload = await res.json();
+
+      if (!res.ok) {
+        throw new Error(payload?.error || "Failed to send message");
+      }
+
       setLoad(false);
       setSent(true);
       setForm({ name: "", email: "", message: "" });
+      setActiveField("name");
+      moveToField("name");
       setTimeout(() => setSent(false), 4000);
-    }, 1200);
+    } catch (err) {
+      setLoad(false);
+      setSendError(err instanceof Error ? err.message : "Failed to send message");
+    }
+  };
+
+  const moveToField = (field) => {
+    setActiveField(field);
+    const next = inputRefs.current[field];
+    if (next) next.focus();
+  };
+
+  const handleFieldEnter = (e, field) => {
+    if (e.key !== "Enter") return;
+    if (field === "name") {
+      e.preventDefault();
+      moveToField("email");
+    }
+    if (field === "email") {
+      e.preventDefault();
+      moveToField("message");
+    }
+  };
+
+  const handleMessageKeyDown = (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+      e.preventDefault();
+      e.currentTarget.form?.requestSubmit();
+    }
   };
 
   return (
@@ -187,74 +236,148 @@ export default function Contact() {
                 </span>
               </div>
 
-              <form onSubmit={handleSubmit} style={{ padding: "28px" }}>
+              <form onSubmit={handleSubmit} style={{ padding: "24px" }}>
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: 11,
                     color: "var(--g)",
-                    letterSpacing: "0.08em",
-                    marginBottom: 22,
+                    letterSpacing: "0.06em",
+                    marginBottom: 18,
                   }}
                 >
-                  <span style={{ color: "var(--g3)" }}>root@achira-dev:~#</span>
-                  {" "}compose --new-message
+                  <span style={{ color: "var(--g3)" }}>visitor@portfolio:~$</span>
+                  {" "}contact --interactive
                 </div>
 
-                {[
-                  { name: "name",    label: "From (Name)",  type: "text",  placeholder: "Your name"        },
-                  { name: "email",   label: "Reply-To",     type: "email", placeholder: "your@email.com"   },
-                ].map((field) => (
-                  <div key={field.name} style={{ marginBottom: 16 }}>
-                    <label
-                      style={{
-                        display: "block",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: 9,
-                        letterSpacing: "0.12em",
-                        color: "var(--muted)",
-                        marginBottom: 6,
-                        textTransform: "uppercase",
-                      }}
-                    >
-                      {field.label}:
-                    </label>
-                    <input
-                      className="form-input"
-                      type={field.type}
-                      name={field.name}
-                      value={form[field.name]}
-                      onChange={handleChange}
-                      placeholder={field.placeholder}
-                      required
-                    />
-                  </div>
-                ))}
-
-                <div style={{ marginBottom: 20 }}>
-                  <label
+                <div
+                  style={{
+                    background: "rgba(0,255,65,0.03)",
+                    border: "1px solid var(--border)",
+                    borderRadius: 4,
+                    padding: "12px 12px 8px",
+                    marginBottom: 14,
+                  }}
+                >
+                  <div
                     style={{
-                      display: "block",
                       fontFamily: "var(--font-mono)",
-                      fontSize: 9,
-                      letterSpacing: "0.12em",
+                      fontSize: 10,
                       color: "var(--muted)",
-                      marginBottom: 6,
-                      textTransform: "uppercase",
+                      marginBottom: 8,
                     }}
                   >
-                    Subject / Message:
-                  </label>
+                    <span style={{ color: "var(--g3)" }}>$</span>
+                    {` set sender.name "${form.name || "..."}"`}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "var(--muted)",
+                      marginBottom: 8,
+                    }}
+                  >
+                    <span style={{ color: "var(--g3)" }}>$</span>
+                    {` set sender.email "${form.email || "..."}"`}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "var(--muted)",
+                    }}
+                  >
+                    <span style={{ color: "var(--g3)" }}>$</span> write message --chars={form.message.length}
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 12 }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: activeField === "name" ? "var(--g)" : "var(--muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <span style={{ color: "var(--g3)" }}>name@prompt:~$</span> whoami --set
+                  </div>
+                  <input
+                    ref={(el) => (inputRefs.current.name = el)}
+                    className="form-input"
+                    type="text"
+                    name="name"
+                    value={form.name}
+                    onFocus={() => setActiveField("name")}
+                    onChange={handleChange}
+                    onKeyDown={(e) => handleFieldEnter(e, "name")}
+                    placeholder="Your name"
+                    required
+                    style={{ borderStyle: "dashed" }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: 12 }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: activeField === "email" ? "var(--g)" : "var(--muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <span style={{ color: "var(--g3)" }}>mail@prompt:~$</span> configure reply-to
+                  </div>
+                  <input
+                    ref={(el) => (inputRefs.current.email = el)}
+                    className="form-input"
+                    type="email"
+                    name="email"
+                    value={form.email}
+                    onFocus={() => setActiveField("email")}
+                    onChange={handleChange}
+                    onKeyDown={(e) => handleFieldEnter(e, "email")}
+                    placeholder="your@email.com"
+                    required
+                    style={{ borderStyle: "dashed" }}
+                  />
+                </div>
+
+                <div style={{ marginBottom: 18 }}>
+                  <div
+                    style={{
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: activeField === "message" ? "var(--g)" : "var(--muted)",
+                      marginBottom: 6,
+                    }}
+                  >
+                    <span style={{ color: "var(--g3)" }}>msg@prompt:~$</span> nano /tmp/opportunity.txt
+                  </div>
                   <textarea
+                    ref={(el) => (inputRefs.current.message = el)}
                     className="form-input"
                     name="message"
                     rows={5}
                     value={form.message}
+                    onFocus={() => setActiveField("message")}
                     onChange={handleChange}
+                    onKeyDown={handleMessageKeyDown}
                     placeholder="Tell me about the opportunity..."
                     required
-                    style={{ resize: "vertical" }}
+                    style={{ resize: "vertical", borderStyle: "dashed" }}
                   />
+                  <div
+                    style={{
+                      marginTop: 8,
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 10,
+                      color: "var(--muted)",
+                    }}
+                  >
+                    Tip: Press Enter to jump from name to email. Use Ctrl/Cmd + Enter here to submit.
+                  </div>
                 </div>
 
                 <button
@@ -264,11 +387,24 @@ export default function Contact() {
                   disabled={loading}
                 >
                   {loading
-                    ? "sending..."
+                    ? "transmitting..."
                     : sent
-                    ? "✓ Message Sent!"
-                    : "sendmail --send"}
+                    ? "✓ Packet delivered"
+                    : "sendmail --send --priority=high"}
                 </button>
+
+                {sendError ? (
+                  <div
+                    style={{
+                      marginTop: 10,
+                      fontFamily: "var(--font-mono)",
+                      fontSize: 11,
+                      color: "#ff6b6b",
+                    }}
+                  >
+                    transmit: failed — {sendError}
+                  </div>
+                ) : null}
               </form>
             </div>
           </div>

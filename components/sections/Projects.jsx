@@ -273,6 +273,54 @@ function ProjectCard({ project, delay }) {
         {project.desc}
       </p>
 
+      {project.contributions?.length ? (
+        <div style={{ marginBottom: 16 }}>
+          {project.contributions.slice(0, 3).map((c) => (
+            <div
+              key={c}
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: 6,
+                marginBottom: 6,
+                fontFamily: "var(--font-mono)",
+                fontSize: 10,
+                color: "var(--muted)",
+                lineHeight: 1.5,
+              }}
+            >
+              <span style={{ color: project.color, flexShrink: 0 }}>▸</span>
+              <span>{c}</span>
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 14 }}>
+        {project.repoUrl ? (
+          <a
+            href={project.repoUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-ghost"
+            style={{ padding: "6px 12px", fontSize: 10 }}
+          >
+            git clone
+          </a>
+        ) : null}
+        {project.liveUrl ? (
+          <a
+            href={project.liveUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="btn btn-green"
+            style={{ padding: "6px 12px", fontSize: 10 }}
+          >
+            ./run.sh ↗
+          </a>
+        ) : null}
+      </div>
+
       <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
         {project.tech.map((t) => (
           <Tag key={t} color={project.color}>{t}</Tag>
@@ -285,8 +333,8 @@ function ProjectCard({ project, delay }) {
 export default function Projects() {
   const [headerRef, headerVisible] = useIntersection(0.2);
 
-  const featured = projects.find((p) => p.featured);
-  const rest     = projects.filter((p) => !p.featured);
+  const featuredProjects = projects.filter((p) => p.featured);
+  const rest = projects.filter((p) => !p.featured);
 
   return (
     <section
@@ -327,7 +375,9 @@ export default function Projects() {
         </div>
 
         {/* Featured */}
-        {featured && <FeaturedProject project={featured} />}
+        {featuredProjects.map((project) => (
+          <FeaturedProject key={project.id} project={project} />
+        ))}
 
         {/* Grid */}
         <div

@@ -81,6 +81,25 @@ npm run build
 # Set publish dir:    .next
 ```
 
+## 📬 Contact Email Setup
+
+To make the contact form send real emails, create `.env.local` in project root:
+
+```bash
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_USER=achiramedagedara0@gmail.com
+SMTP_PASS=your_gmail_app_password
+CONTACT_TO_EMAIL=achiramedagedara0@gmail.com
+CONTACT_FROM_EMAIL=achiramedagedara0@gmail.com
+```
+
+Notes:
+
+- `SMTP_PASS` must be a Gmail App Password (not your normal Gmail password).
+- Restart `npm run dev` after updating env vars.
+- Contact form posts to `POST /api/contact` and sends via nodemailer.
+
 ---
 
 ## ✏️ Personalisation Checklist

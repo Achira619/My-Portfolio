@@ -1,5 +1,3 @@
-import nodemailer from "nodemailer";
-
 const REQUIRED_FIELDS = ["name", "email", "message"];
 
 function validatePayload(payload) {
@@ -33,73 +31,93 @@ export async function POST(request) {
       return Response.json({ error }, { status: 400 });
     }
 
-    const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
-    const smtpPort = Number(process.env.SMTP_PORT || 465);
-    const smtpUser = process.env.SMTP_USER;
-    const smtpPass = process.env.SMTP_PASS;
+    const mailjetApiKey = process.env.MAILJET_API_KEY;
+    const mailjetApiSecret = process.env.MAILJET_API_SECRET || process.env.MAILJET_SECRET_KEY;
 
-    if (!smtpUser || !smtpPass) {
+    if (!mailjetApiKey || !mailjetApiSecret) {
       return Response.json(
         { error: "Email service not configured on server" },
         { status: 500 }
       );
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || "achiramedagedara0@gmail.com";
-    const fromEmail = process.env.CONTACT_FROM_EMAIL || smtpUser;
+    const toEmail = process.env.CONTACT_TO_EMAIL || process.env.MAIL_TO || "achiramedagedara0@gmail.com";
+    const fromEmail = process.env.CONTACT_FROM_EMAIL || process.env.MAIL_FROM;
+    const fromName = process.env.CONTACT_FROM_NAME || "Portfolio Contact";
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    });
+    if (!fromEmail) {
+      return Response.json(
+        { error: "Missing CONTACT_FROM_EMAIL in server environment" },
+        { status: 500 }
+      );
+    }
 
     const safeName = body.name.trim();
     const safeEmail = body.email.trim();
     const safeMessage = body.message.trim();
 
-    await transporter.sendMail({
-      from: `Portfolio Contact <${fromEmail}>`,
-      to: toEmail,
-      replyTo: safeEmail,
-      subject: `Portfolio Contact: ${safeName}`,
-      text: [
-        "New portfolio contact message",
-        "",
-        `Name: ${safeName}`,
-        `Email: ${safeEmail}`,
-        "",
-        "Message:",
-        safeMessage,
-      ].join("\n"),
-      html: `
-        <h2>New portfolio contact message</h2>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        <p><strong>Message:</strong></p>
-        <pre style="white-space:pre-wrap;font-family:monospace">${safeMessage}</pre>
-      `,
+    const auth = Buffer.from(`${mailjetApiKey}:${mailjetApiSecret}`).toString("base64");
+    const mailjetPayload = {
+      Messages: [
+        {
+          From: {
+            Email: fromEmail,
+            Name: fromName,
+          },
+          To: [
+            {
+              Email: toEmail,
+            },
+          ],
+          ReplyTo: {
+            Email: safeEmail,
+            Name: safeName,
+          },
+          Subject: `Portfolio Contact: ${safeName}`,
+          TextPart: [
+            "New portfolio contact message",
+            "",
+            `Name: ${safeName}`,
+            `Email: ${safeEmail}`,
+            "",
+            "Message:",
+            safeMessage,
+          ].join("\n"),
+          HTMLPart: `
+            <h2>New portfolio contact message</h2>
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> ${safeEmail}</p>
+            <p><strong>Message:</strong></p>
+            <pre style="white-space:pre-wrap;font-family:monospace">${safeMessage}</pre>
+          `,
+        },
+      ],
+    };
+
+    const response = await fetch("https://api.mailjet.com/v3.1/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Basic ${auth}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(mailjetPayload),
     });
 
-    return Response.json({ ok: true });
-  } catch (error) {
-    if (error?.code === "EAUTH" || error?.responseCode === 535) {
+    if (!response.ok) {
+      const errorBody = await response.text();
       return Response.json(
-        {
-          error:
-            "SMTP authentication failed. For Gmail, use a 16-character App Password (not your normal Gmail password).",
-        },
+        { error: `Mailjet error (${response.status}): ${errorBody}` },
         { status: 500 }
       );
     }
 
-    if (error?.code === "ESOCKET" || error?.code === "ECONNECTION") {
+    return Response.json({ ok: true });
+  } catch (error) {
+    if (error instanceof TypeError) {
       return Response.json(
-        { error: "Could not connect to SMTP server. Check SMTP host, port, and network." },
+        {
+          error: "Could not reach Mailjet API. Check network access and endpoint configuration.",
+        },
         { status: 500 }
       );
     }

@@ -86,19 +86,19 @@ npm run build
 To make the contact form send real emails, create `.env.local` in project root:
 
 ```bash
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_USER=achiramedagedara0@gmail.com
-SMTP_PASS=your_gmail_app_password
+MAILJET_API_KEY=your_mailjet_api_key
+MAILJET_API_SECRET=your_mailjet_api_secret
 CONTACT_TO_EMAIL=achiramedagedara0@gmail.com
 CONTACT_FROM_EMAIL=achiramedagedara0@gmail.com
+CONTACT_FROM_NAME=Achira Portfolio
 ```
 
 Notes:
 
-- `SMTP_PASS` must be a Gmail App Password (not your normal Gmail password).
+- `CONTACT_FROM_EMAIL` must be a sender email/domain verified in Mailjet.
+- Keep API keys server-side only (never expose them to client code).
 - Restart `npm run dev` after updating env vars.
-- Contact form posts to `POST /api/contact` and sends via nodemailer.
+- Contact form posts to `POST /api/contact` and sends via Mailjet API.
 
 ---
 

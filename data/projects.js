@@ -44,7 +44,7 @@ export const projects = [
   {
     id: "Python-nic",
     featured: true,
-    name: "Nic detail extractor",
+    name: "NIC detail extractor",
     path: "~/projects/Python-nic",
     status: "running",
     pid: "--",

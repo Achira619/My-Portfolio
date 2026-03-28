@@ -103,15 +103,25 @@ export async function POST(request) {
       body: JSON.stringify(mailjetPayload),
     });
 
+    const mailjetResponse = await response.json().catch(() => null);
+
     if (!response.ok) {
-      const errorBody = await response.text();
       return Response.json(
-        { error: `Mailjet error (${response.status}): ${errorBody}` },
+        {
+          error: `Mailjet error (${response.status})`,
+          details: mailjetResponse,
+        },
         { status: 500 }
       );
     }
 
-    return Response.json({ ok: true });
+    const firstTo = mailjetResponse?.Messages?.[0]?.To?.[0];
+    return Response.json({
+      ok: true,
+      provider: "mailjet",
+      messageId: firstTo?.MessageID ?? null,
+      messageUuid: firstTo?.MessageUUID ?? null,
+    });
   } catch (error) {
     if (error instanceof TypeError) {
       return Response.json(

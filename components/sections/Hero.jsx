@@ -19,7 +19,7 @@ const BOOT_LINES = [
   { text: "[    0.500000] skills.service: OK", color: "var(--g)", delay: 700 },
   { text: "[    0.630021] devops.service: On learning..", color: "var(--g)", delay: 900 },
   { text: "[    0.782300] reliability.service: Reserching..", color: "var(--g)", delay: 1100 },
-  { text: "[    1.000000] System ready. Welcome, recruiter.", color: "var(--g)", delay: 1400 },
+  { text: "[    1.000000] System ready. Welcome, Fellow Coders...", color: "var(--g)", delay: 1400 },
 ];
 
 const STATS = [
@@ -129,7 +129,7 @@ export default function Hero() {
               letterSpacing: "0.14em",
             }}
           >
-            AVAILABLE FOR INTERNSHIPS 2025 / 2026
+            AVAILABLE FOR SRE/Devops INTERNSHIPS 2026/2027
           </span>
         </div>
 

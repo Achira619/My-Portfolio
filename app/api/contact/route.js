@@ -31,10 +31,9 @@ export async function POST(request) {
       return Response.json({ error }, { status: 400 });
     }
 
-    const mailjetApiKey = process.env.MAILJET_API_KEY;
-    const mailjetApiSecret = process.env.MAILJET_API_SECRET || process.env.MAILJET_SECRET_KEY;
+    const resendApiKey = process.env.RESEND_API_KEY;
 
-    if (!mailjetApiKey || !mailjetApiSecret) {
+    if (!resendApiKey) {
       return Response.json(
         { error: "Email service not configured on server" },
         { status: 500 }
@@ -43,7 +42,6 @@ export async function POST(request) {
 
     const toEmail = process.env.CONTACT_TO_EMAIL || process.env.MAIL_TO || "achiramedagedara0@gmail.com";
     const fromEmail = process.env.CONTACT_FROM_EMAIL || process.env.MAIL_FROM;
-    const fromName = process.env.CONTACT_FROM_NAME || "Portfolio Contact";
 
     if (!fromEmail) {
       return Response.json(
@@ -56,77 +54,60 @@ export async function POST(request) {
     const safeEmail = body.email.trim();
     const safeMessage = body.message.trim();
 
-    const auth = Buffer.from(`${mailjetApiKey}:${mailjetApiSecret}`).toString("base64");
-    const mailjetPayload = {
-      Messages: [
-        {
-          From: {
-            Email: fromEmail,
-            Name: fromName,
-          },
-          To: [
-            {
-              Email: toEmail,
-            },
-          ],
-          ReplyTo: {
-            Email: safeEmail,
-            Name: safeName,
-          },
-          Subject: `Portfolio Contact: ${safeName}`,
-          TextPart: [
-            "New portfolio contact message",
-            "",
-            `Name: ${safeName}`,
-            `Email: ${safeEmail}`,
-            "",
-            "Message:",
-            safeMessage,
-          ].join("\n"),
-          HTMLPart: `
-            <h2>New portfolio contact message</h2>
-            <p><strong>Name:</strong> ${safeName}</p>
-            <p><strong>Email:</strong> ${safeEmail}</p>
-            <p><strong>Message:</strong></p>
-            <pre style="white-space:pre-wrap;font-family:monospace">${safeMessage}</pre>
-          `,
-        },
-      ],
+    const resendPayload = {
+      from: fromEmail,
+      to: toEmail,
+      replyTo: safeEmail,
+      subject: `Portfolio Contact: ${safeName}`,
+      html: `
+        <h2>New portfolio contact message</h2>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Message:</strong></p>
+        <pre style="white-space:pre-wrap;font-family:monospace">${safeMessage}</pre>
+      `,
+      text: [
+        "New portfolio contact message",
+        "",
+        `Name: ${safeName}`,
+        `Email: ${safeEmail}`,
+        "",
+        "Message:",
+        safeMessage,
+      ].join("\n"),
     };
 
-    const response = await fetch("https://api.mailjet.com/v3.1/send", {
+    const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
-        Authorization: `Basic ${auth}`,
+        Authorization: `Bearer ${resendApiKey}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(mailjetPayload),
+      body: JSON.stringify(resendPayload),
     });
 
-    const mailjetResponse = await response.json().catch(() => null);
+    const resendResponse = await response.json();
 
     if (!response.ok) {
       return Response.json(
         {
-          error: `Mailjet error (${response.status})`,
-          details: mailjetResponse,
+          error: `Resend error (${response.status})`,
+          details: resendResponse,
         },
         { status: 500 }
       );
     }
 
-    const firstTo = mailjetResponse?.Messages?.[0]?.To?.[0];
     return Response.json({
       ok: true,
-      provider: "mailjet",
-      messageId: firstTo?.MessageID ?? null,
-      messageUuid: firstTo?.MessageUUID ?? null,
+      provider: "resend",
+      messageId: resendResponse?.id ?? null,
     });
   } catch (error) {
     if (error instanceof TypeError) {
       return Response.json(
         {
-          error: "Could not reach Mailjet API. Check network access and endpoint configuration.",
+          error: "Could not reach Resend API. Check network access and endpoint configuration.",
         },
         { status: 500 }
       );

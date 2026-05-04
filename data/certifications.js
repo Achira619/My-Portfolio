@@ -75,8 +75,8 @@ export const certifications = [
   expires: null,
   credentialId: null,
   verifyUrl: "#",
-  status: "in-progress",
-  color: "var(--amber)",
+  status: "earned",
+  color: "var(--g)",
   icon: "🐍",
   tags: ["Python Fundamentals "],
 }

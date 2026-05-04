@@ -29,7 +29,7 @@ export const certifications = [
   verifyUrl: "https://lnkd.in/gQYCiSTx",
   status: "earned",
   color: "var(--g)",
-  icon: "",
+  icon: "☁️",
   tags: ["AWS", "Cloud", "Fundamentals"],
 
   },

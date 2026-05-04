@@ -199,18 +199,6 @@ export default function About() {
               >
                 <div
                   style={{
-                    fontFamily: "var(--font-mono)",
-                    fontSize: 9,
-                    color: "var(--muted)",
-                    marginBottom: 8,
-                    letterSpacing: "0.08em",
-                  }}
-                >
-                  geo --country sri-lanka --pins
-                </div>
-
-                <div
-                  style={{
                     position: "relative",
                     width: "100%",
                     height: 170,

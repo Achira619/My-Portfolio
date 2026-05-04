@@ -29,7 +29,7 @@ export const certifications = [
   verifyUrl: "https://lnkd.in/gQYCiSTx",
   status: "earned",
   color: "var(--g)",
-  icon: "☁",
+  icon: "",
   tags: ["AWS", "Cloud", "Fundamentals"],
 
   },
@@ -44,7 +44,7 @@ export const certifications = [
   verifyUrl: "https://www.linkedin.com/posts/achira-medagedara_certificate-of-completion-activity-7429975069759664129-Mx3b?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEc4lg8BnpkbYjIvmt2VhhEu36dxdYiWi1w",
   status: "earned",
   color: "var(--g)",
-  icon: "☁",
+  icon: "🐧",
   tags: ["Linux", "Operating Systems", "Fundamentals"],
 
   },

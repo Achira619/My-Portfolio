@@ -78,7 +78,26 @@ export const projects = [
       "gets real time vessel traffic and palacement information",
     ],
     tech: ["Figma"],
-    color: "var(--red)",
+    color: "var(--blue)",
     repoUrl: "#",
   },
+  {
+  id: "SRE-uptime-monitor",
+  featured: true,
+  name: "Corpovinculo SRE Uptime Monitor",
+  path: "~/projects/SRE-uptime-monitor",
+  status: "Building",
+  pid: "1337",
+  uptime: "inprogress",
+  desc: "A lightweight SRE-grade uptime monitoring tool that continuously tracks Corpovinculo service availability, logs downtime events, and alerts when endpoints go dark.",
+  contributions: [
+    "Pings HTTP/HTTPS endpoints at configurable intervals",
+    "Logs uptime and downtime events with timestamps",
+    "Calculates and displays uptime percentage per service",
+    "Sends alerts when a monitored service goes down",
+  ],
+  tech: ["Python"],
+  color: "var(--red)",
+  repoUrl: "",
+}
 ];

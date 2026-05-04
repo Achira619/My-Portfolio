@@ -16,8 +16,8 @@ function StatusPill({ status }) {
         padding: "2px 9px",
         background: isRunning
           ? "rgba(0,255,65,0.08)"
-          : "rgba(255,184,0,0.07)",
-        border: `1px solid ${isRunning ? "rgba(0,255,65,0.28)" : "rgba(255,184,0,0.25)"}`,
+          : "rgba(163, 8, 8, 0.93)",
+        border: `1px solid ${isRunning ? "rgba(0,255,65,0.28)" : "rgba(198, 10, 10, 0.75)"}`,
         borderRadius: 2,
         fontFamily: "var(--font-mono)",
         fontSize: 9,
@@ -33,7 +33,7 @@ function StatusPill({ status }) {
           boxShadow: isRunning ? "0 0 5px var(--g)" : "0 0 5px var(--amber)",
         }}
       />
-      {isRunning ? "ACTIVE (RUNNING)" : "INACTIVE (PLANNED)"}
+      {isRunning ? "ACTIVE (RUNNING)" : "INACTIVE (IN-PROGRESS)"}
     </span>
   );
 }

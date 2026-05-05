@@ -46,7 +46,7 @@ function FeaturedProject({ project }) {
       ref={ref}
       className={`appear ${visible ? "visible" : ""}`}
       style={{
-        padding: "36px",
+        padding: "clamp(20px, 4vw, 36px)",
         background:
           "linear-gradient(135deg, rgba(0,255,65,0.04) 0%, rgba(0,229,255,0.02) 100%)",
         border: "1px solid rgba(0,255,65,0.22)",
@@ -61,7 +61,8 @@ function FeaturedProject({ project }) {
         style={{
           position: "absolute",
           top: 0, right: 0,
-          width: 320, height: 260,
+          width: "clamp(150px, 40vw, 320px)", 
+          height: "clamp(120px, 30vw, 260px)",
           background:
             "radial-gradient(ellipse, rgba(0,255,65,0.07) 0%, transparent 70%)",
           pointerEvents: "none",
@@ -358,7 +359,7 @@ export default function Projects() {
     <section
       id="projects"
       style={{
-        padding: "110px clamp(16px,6vw,80px)",
+        padding: "clamp(70px, 12vh, 110px) clamp(16px,6vw,80px)",
         background: "rgba(0,0,0,0.2)",
       }}
     >

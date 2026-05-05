@@ -25,19 +25,19 @@ export default function Footer() {
   return (
     <footer
       style={{
-        padding: "28px clamp(16px,5vw,56px)",
+        padding: "clamp(16px, 3vw, 28px) clamp(12px, 4vw, 56px)",
         borderTop: "1px solid var(--border)",
         display: "flex",
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 12,
+        gap: "clamp(8px, 2vw, 12px)",
         position: "relative",
         zIndex: 1,
       }}
     >
       {/* Left */}
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)" }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(8px, 1.1vw, 10px)", color: "var(--muted)" }}>
         <span style={{ color: "var(--g)" }}>©</span> 2026 Achira Medagedara —{" "}
         <span style={{ color: "var(--muted)" }}>All rights reserved</span>
       </div>
@@ -46,10 +46,10 @@ export default function Footer() {
       <div
         style={{
           fontFamily: "var(--font-mono)",
-          fontSize: 10,
+          fontSize: "clamp(8px, 1.1vw, 10px)",
           color: "var(--muted)",
           display: "flex",
-          gap: 20,
+          gap: "clamp(12px, 2vw, 20px)",
         }}
       >
         <span>
@@ -61,7 +61,7 @@ export default function Footer() {
       </div>
 
       {/* Right */}
-      <div style={{ fontFamily: "var(--font-mono)", fontSize: 10, color: "var(--muted)" }}>
+      <div style={{ fontFamily: "var(--font-mono)", fontSize: "clamp(8px, 1.1vw, 10px)", color: "var(--muted)" }}>
         Built with{" "}
         <span style={{ color: "var(--g)" }}>Next.js</span> &amp;{" "}
         <span style={{ color: "var(--g)" }}>Tailwind</span>

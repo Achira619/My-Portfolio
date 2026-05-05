@@ -86,7 +86,7 @@ export default function Goals() {
     <section
       id="goals"
       style={{
-        padding: "110px clamp(16px,6vw,80px)",
+        padding: "clamp(70px, 12vh, 110px) clamp(16px,6vw,80px)",
         background: "rgba(0,0,0,0.2)",
       }}
     >

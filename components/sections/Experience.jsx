@@ -166,7 +166,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      style={{ padding: "110px clamp(16px,6vw,80px)" }}
+      style={{ padding: "clamp(70px, 12vh, 110px) clamp(16px,6vw,80px)" }}
     >
       <div style={{ maxWidth: 800, margin: "0 auto" }}>
         <div

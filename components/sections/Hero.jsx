@@ -59,7 +59,7 @@ export default function Hero() {
         minHeight: "100vh",
         display: "flex",
         alignItems: "center",
-        padding: "80px clamp(16px,6vw,80px) 60px",
+        padding: "clamp(60px, 10vh, 80px) clamp(16px, 5vw, 80px) clamp(40px, 8vh, 60px)",
         position: "relative",
         overflow: "hidden",
       }}
@@ -70,7 +70,8 @@ export default function Hero() {
           position: "absolute",
           top: "20%", left: "50%",
           transform: "translateX(-50%)",
-          width: 700, height: 400,
+          width: "clamp(300px, 80vw, 700px)", 
+          height: "clamp(200px, 50vw, 400px)",
           background:
             "radial-gradient(ellipse, rgba(0,255,65,0.055) 0%, transparent 70%)",
           pointerEvents: "none",
@@ -83,7 +84,7 @@ export default function Hero() {
         {/* ── Boot log ── */}
         <div
           style={{
-            marginBottom: 36,
+            marginBottom: "clamp(20px, 5vw, 36px)",
             opacity: show ? 1 : 0,
             transition: "opacity 0.5s ease",
           }}
@@ -93,7 +94,7 @@ export default function Hero() {
               key={i}
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 11,
+                fontSize: "clamp(9px, 1.3vw, 11px)",
                 color: l.color,
                 letterSpacing: "0.04em",
                 lineHeight: 1.7,
@@ -110,12 +111,12 @@ export default function Hero() {
           style={{
             display: "inline-flex",
             alignItems: "center",
-            gap: 8,
-            padding: "5px 14px",
+            gap: "clamp(6px, 1.5vw, 8px)",
+            padding: "clamp(4px, 1vw, 5px) clamp(10px, 2vw, 14px)",
             background: "rgba(0,255,65,0.05)",
             border: "1px solid rgba(0,255,65,0.22)",
             borderRadius: 2,
-            marginBottom: 28,
+            marginBottom: "clamp(16px, 4vw, 28px)",
             opacity: show ? 1 : 0,
             animation: show ? "slide-up 0.6s 0.2s ease both" : "none",
           }}
@@ -124,7 +125,7 @@ export default function Hero() {
           <span
             style={{
               fontFamily: "var(--font-mono)",
-              fontSize: 10,
+              fontSize: "clamp(8px, 1.1vw, 10px)",
               color: "var(--g)",
               letterSpacing: "0.14em",
             }}
@@ -212,7 +213,7 @@ export default function Hero() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: 14,
+            gap: "clamp(10px, 2.5vw, 14px)",
             opacity: show ? 1 : 0,
             animation: show ? "slide-up 0.7s 1s ease both" : "none",
           }}
@@ -220,16 +221,18 @@ export default function Hero() {
           <button
             className="btn btn-green"
             onClick={() => scrollTo("#projects")}
+            style={{ fontSize: "clamp(8px, 1.1vw, 11px)" }}
           >
             <span>./</span>view-projects.sh
           </button>
           <button
             className="btn btn-cyan"
             onClick={() => scrollTo("#contact")}
+            style={{ fontSize: "clamp(8px, 1.1vw, 11px)" }}
           >
             <span>ssh</span> contact@achira
           </button>
-          <a className="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noreferrer">
+          <a className="btn btn-ghost" href="/resume.pdf" target="_blank" rel="noreferrer" style={{ fontSize: "clamp(8px, 1.1vw, 11px)" }}>
             <span>curl</span> resume.pdf
           </a>
         </div>
@@ -239,9 +242,9 @@ export default function Hero() {
           style={{
             display: "flex",
             flexWrap: "wrap",
-            gap: 32,
-            marginTop: 60,
-            paddingTop: 28,
+            gap: "clamp(16px, 4vw, 32px)",
+            marginTop: "clamp(40px, 10vw, 60px)",
+            paddingTop: "clamp(16px, 4vw, 28px)",
             borderTop: "1px solid var(--border)",
             opacity: show ? 1 : 0,
             animation: show ? "slide-up 0.7s 1.2s ease both" : "none",
@@ -252,7 +255,7 @@ export default function Hero() {
               <div
                 style={{
                   fontFamily: "var(--font-disp)",
-                  fontSize: 28,
+                  fontSize: "clamp(20px, 4vw, 28px)",
                   fontWeight: 800,
                   color: "var(--g)",
                   lineHeight: 1,
@@ -264,7 +267,7 @@ export default function Hero() {
               <div
                 style={{
                   fontFamily: "var(--font-mono)",
-                  fontSize: 10,
+                  fontSize: "clamp(8px, 1.2vw, 10px)",
                   color: "var(--muted)",
                   letterSpacing: "0.08em",
                 }}

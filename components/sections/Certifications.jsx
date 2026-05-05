@@ -231,7 +231,7 @@ export default function Certifications() {
   return (
     <section
       id="certifications"
-      style={{ padding: "110px clamp(16px,6vw,80px)" }}
+      style={{ padding: "clamp(70px, 12vh, 110px) clamp(16px,6vw,80px)" }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         {/* Header */}

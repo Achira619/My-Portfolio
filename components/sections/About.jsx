@@ -22,7 +22,7 @@ export default function About() {
       id="about"
       ref={ref}
       style={{
-        padding: "110px clamp(16px,6vw,80px)",
+        padding: "clamp(70px, 12vh, 110px) clamp(16px, 5vw, 80px)",
         background: "rgba(0,0,0,0.25)",
       }}
     >
@@ -43,7 +43,7 @@ export default function About() {
             <h2
               style={{
                 fontFamily: "var(--font-disp)",
-                fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
+                fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
                 fontWeight: 800,
                 lineHeight: 1.1,
                 letterSpacing: "-0.02em",
@@ -60,7 +60,7 @@ export default function About() {
             <p
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 12,
+                fontSize: "clamp(10px, 1.2vw, 12px)",
                 color: "var(--muted)",
                 lineHeight: 1.95,
                 marginBottom: 18,
@@ -74,7 +74,7 @@ export default function About() {
             <p
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 12,
+                fontSize: "clamp(10px, 1.2vw, 12px)",
                 color: "var(--muted)",
                 lineHeight: 1.95,
                 marginBottom: 18,
@@ -88,7 +88,7 @@ export default function About() {
             <p
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 12,
+                fontSize: "clamp(10px, 1.2vw, 12px)",
                 color: "var(--muted)",
                 lineHeight: 1.95,
                 marginBottom: 32,
@@ -101,7 +101,7 @@ export default function About() {
             </p>
 
             {/* Tags */}
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 32 }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(6px, 1.5vw, 8px)", marginBottom: 32 }}>
               {TAGS.map((t) => (
                 <Tag key={t}>{t}</Tag>
               ))}

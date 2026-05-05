@@ -53,8 +53,8 @@ export default function Navbar() {
           position: "fixed",
           top: 0, left: 0, right: 0,
           zIndex: 100,
-          height: 58,
-          padding: "0 clamp(16px,5vw,56px)",
+          height: "clamp(48px, 8vh, 58px)",
+          padding: "0 clamp(12px, 4vw, 56px)",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
@@ -65,19 +65,22 @@ export default function Navbar() {
         }}
       >
         {/* ── Logo ── */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(8px, 2vw, 12px)" }}>
           <div
             style={{
-              width: 30, height: 30,
+              width: "clamp(24px, 6vw, 30px)", 
+              height: "clamp(24px, 6vw, 30px)",
               border: "1px solid var(--g)",
               display: "flex", alignItems: "center", justifyContent: "center",
               position: "relative",
+              flexShrink: 0,
             }}
           >
             <span
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 11, fontWeight: 700,
+                fontSize: "clamp(8px, 1.8vw, 11px)", 
+                fontWeight: 700,
                 color: "var(--g)",
               }}
             >
@@ -91,11 +94,12 @@ export default function Navbar() {
               }}
             />
           </div>
-          <div>
+          <div style={{ display: "none", "@media (min-width: 640px)": { display: "block" } }}>
             <div
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 11, color: "var(--g)",
+                fontSize: "clamp(9px, 1.5vw, 11px)", 
+                color: "var(--g)",
                 letterSpacing: "0.04em",
               }}
             >
@@ -104,7 +108,8 @@ export default function Navbar() {
             <div
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 9, color: "var(--muted)",
+                fontSize: "clamp(7px, 1.2vw, 9px)", 
+                color: "var(--muted)",
                 letterSpacing: "0.06em",
               }}
             >
@@ -116,7 +121,7 @@ export default function Navbar() {
         {/* ── Desktop nav ── */}
         <div
           className="desktop-nav"
-          style={{ display: "flex", alignItems: "center", gap: 28 }}
+          style={{ display: "flex", alignItems: "center", gap: "clamp(16px, 3vw, 28px)" }}
         >
           {NAV_LINKS.map((l) => (
             <button
@@ -125,7 +130,8 @@ export default function Navbar() {
               style={{
                 background: "none", border: "none", cursor: "pointer",
                 fontFamily: "var(--font-mono)",
-                fontSize: 11, letterSpacing: "0.12em",
+                fontSize: "clamp(8px, 1.2vw, 11px)", 
+                letterSpacing: "0.12em",
                 textTransform: "uppercase",
                 color: "var(--muted)",
                 padding: "4px 0",
@@ -158,7 +164,7 @@ export default function Navbar() {
           <button
             onClick={() => scrollTo("#contact")}
             className="btn btn-green"
-            style={{ padding: "7px 16px", fontSize: 10 }}
+            style={{ padding: "clamp(5px, 1.2vw, 7px) clamp(10px, 2vw, 16px)", fontSize: "clamp(7px, 1vw, 10px)" }}
           >
             $ hire --me
           </button>
@@ -188,13 +194,13 @@ export default function Navbar() {
         <div
           style={{
             position: "fixed",
-            top: 58, left: 0, right: 0,
+            top: "clamp(48px, 8vh, 58px)", left: 0, right: 0,
             zIndex: 99,
             background: "rgba(5,10,5,0.98)",
             borderBottom: "1px solid var(--border)",
             backdropFilter: "blur(20px)",
-            padding: "24px clamp(16px,5vw,56px)",
-            display: "flex", flexDirection: "column", gap: 18,
+            padding: "clamp(16px, 4vw, 24px) clamp(12px, 4vw, 56px)",
+            display: "flex", flexDirection: "column", gap: "clamp(12px, 3vw, 18px)",
           }}
         >
           {NAV_LINKS.map((l) => (
@@ -204,7 +210,8 @@ export default function Navbar() {
               style={{
                 background: "none", border: "none", cursor: "pointer",
                 fontFamily: "var(--font-mono)",
-                fontSize: 13, letterSpacing: "0.1em",
+                fontSize: "clamp(10px, 2.5vw, 13px)", 
+                letterSpacing: "0.1em",
                 textTransform: "uppercase",
                 color: "var(--muted)",
                 textAlign: "left",

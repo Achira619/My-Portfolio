@@ -102,14 +102,14 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      style={{ padding: "110px clamp(16px,6vw,80px)" }}
+      style={{ padding: "clamp(70px, 12vh, 110px) clamp(16px,6vw,80px)" }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
         <div
           style={{
             display: "grid",
             gridTemplateColumns: "1fr 1fr",
-            gap: 72,
+            gap: "clamp(40px, 8vw, 72px)",
           }}
           className="contact-grid"
         >
@@ -119,7 +119,7 @@ export default function Contact() {
             <h2
               style={{
                 fontFamily: "var(--font-disp)",
-                fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
+                fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
                 fontWeight: 800,
                 letterSpacing: "-0.02em",
                 marginBottom: 20,
@@ -132,7 +132,7 @@ export default function Contact() {
             <p
               style={{
                 fontFamily: "var(--font-mono)",
-                fontSize: 12,
+                fontSize: "clamp(10px, 1.2vw, 12px)",
                 color: "var(--muted)",
                 lineHeight: 1.9,
                 marginBottom: 36,
@@ -143,7 +143,7 @@ export default function Contact() {
               stay reliable — let&apos;s talk.
             </p>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "clamp(10px, 2vw, 12px)" }}>
               {CONTACT_LINKS.map((c) => (
                 <a
                   key={c.label}
@@ -236,7 +236,7 @@ export default function Contact() {
                 </span>
               </div>
 
-              <form onSubmit={handleSubmit} style={{ padding: "24px" }}>
+              <form onSubmit={handleSubmit} style={{ padding: "clamp(16px, 3vw, 24px)" }}>
                 <div
                   style={{
                     fontFamily: "var(--font-mono)",

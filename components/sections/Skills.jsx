@@ -12,20 +12,20 @@ export default function Skills() {
     <section
       id="skills"
       ref={ref}
-      style={{ padding: "110px clamp(16px,6vw,80px)" }}
+      style={{ padding: "clamp(70px, 12vh, 110px) clamp(16px, 5vw, 80px)" }}
     >
       <div style={{ maxWidth: 1080, margin: "0 auto" }}>
 
         {/* ── Header ── */}
         <div
           className={`appear ${visible ? "visible" : ""}`}
-          style={{ textAlign: "center", marginBottom: 56 }}
+          style={{ textAlign: "center", marginBottom: "clamp(40px, 8vw, 56px)" }}
         >
           <SectionLabel center>{"// Technical Skills"}</SectionLabel>
           <h2
             style={{
               fontFamily: "var(--font-disp)",
-              fontSize: "clamp(1.8rem,3.5vw,2.6rem)",
+              fontSize: "clamp(1.5rem, 3vw, 2.6rem)",
               fontWeight: 800,
               letterSpacing: "-0.02em",
               marginBottom: 10,
@@ -36,7 +36,7 @@ export default function Skills() {
           <p
             style={{
               fontFamily: "var(--font-mono)",
-              fontSize: 11,
+              fontSize: "clamp(8px, 1.1vw, 11px)",
               color: "var(--muted)",
               letterSpacing: "0.06em",
             }}
@@ -83,8 +83,8 @@ export default function Skills() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
-            gap: 20,
+            gridTemplateColumns: "repeat(auto-fit, minmax(clamp(150px, 100%, 240px), 1fr))",
+            gap: "clamp(12px, 3vw, 20px)",
             marginBottom: 40,
           }}
         >

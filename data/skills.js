@@ -43,7 +43,7 @@ export const skillCategories = [
     id: "database",
     label: "Database",
     path: "/var/lib/db",
-    color: "var(--g)",
+    color: "#6a00ff",
     icon: "⊞",
     skills: [
       { name: "SQL",              level: 78, pkg: "postgresql-16" },

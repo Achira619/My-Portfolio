@@ -25,7 +25,7 @@ export const projects = [
   
   {
     id: "Life-on-land",
-    featured: true,
+    featured: false,
     name: "Life on Land SDG 15 Website ",
     path: "~/projects/cloud-platform",
     status: "running",
@@ -43,7 +43,7 @@ export const projects = [
   },
   {
     id: "Python-nic",
-    featured: true,
+    featured: false,
     name: "NIC detail extractor",
     path: "~/projects/Python-nic",
     status: "running",
@@ -62,7 +62,7 @@ export const projects = [
   },
   {
   id: "Sail-mate ",
-    featured: true,
+    featured: false,
     name: "Sail-mate-Concept Web Appication ",
     path: "~/projects/Sail-mate ",
     status: "running",
@@ -78,7 +78,7 @@ export const projects = [
       "gets real time vessel traffic and palacement information",
     ],
     tech: ["Figma"],
-    color: "var(--blue)",
+    color: "#a600ff",
     repoUrl: "#",
   },
   {

@@ -13,7 +13,10 @@ export const education = [
     location: "Colombo, Sri Lanka",
     path: "/edu/university/iit",
     highlights: [
-      "Active project contributor — Corpovinculo",
+      " Applied classroom knowledge in real software projects through CorpoVinculo contributions.",
+      "Built strong foundations in algorithms, databases, OOP, and operating systems.",
+      "Exploring Cloud, DevOps, and SRE practices alongside academic studies.",
+      
     ],
     modules: [
       "Data Structures & Algorithms",
@@ -40,8 +43,11 @@ export const education = [
   location: "Colombo, Sri Lanka ",
   path: "/edu/category/name",
   highlights: [
-    "Key achievement or learning",
-    "Another important detail",
+    "Developed core programming and analytical problem-solving skills.",
+    "Gained exposure to Agile development practices through workshops.",
+    " Improved teamwork and leadership through volunteering and student events.",
+      "Built a strong foundation in software engineering principles and practices.",
+      "Completed projects that applied theoretical concepts to real-world scenarios.",
   ],
   modules: [
     "introduction to programming principles",
@@ -49,7 +55,7 @@ export const education = [
     "Database Systems",
     "Desinging inovative solutions",
     "mathematics for computing",
-    "digital skills",
+    "Digital Skills",
     "Digital circuits and logic design",
     "esssential communication skills",
   ],

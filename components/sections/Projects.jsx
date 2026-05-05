@@ -217,11 +217,29 @@ function FeaturedProject({ project }) {
 function ProjectCard({ project, delay }) {
   const [ref, visible] = useIntersection(0.1);
 
+  const handleCardClick = () => {
+    if (project.repoUrl) {
+      window.open(project.repoUrl, "_blank");
+    }
+  };
+
   return (
     <div
       ref={ref}
       className={`card appear ${visible ? "visible" : ""}`}
-      style={{ padding: "26px", transitionDelay: `${delay}s` }}
+      style={{ 
+        padding: "26px", 
+        transitionDelay: `${delay}s`,
+        cursor: project.repoUrl ? "pointer" : "default",
+      }}
+      onClick={handleCardClick}
+      role={project.repoUrl ? "button" : undefined}
+      tabIndex={project.repoUrl ? 0 : undefined}
+      onKeyDown={(e) => {
+        if (project.repoUrl && (e.key === "Enter" || e.key === " ")) {
+          handleCardClick();
+        }
+      }}
     >
       {/* Header */}
       <div

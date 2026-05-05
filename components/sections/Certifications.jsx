@@ -318,9 +318,10 @@ export default function Certifications() {
               </div>
 
               <div
+                className="cert-grid"
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))",
+                  gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
                   gap: 16,
                 }}
               >
@@ -331,6 +332,12 @@ export default function Certifications() {
             </div>
           ))}
         </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .cert-grid { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
       </div>
     </section>
   );

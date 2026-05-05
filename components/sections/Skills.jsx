@@ -47,7 +47,7 @@ export default function Skills() {
 
         {/* ── htop-style header row ── */}
         <div
-          className={`appear ${visible ? "visible" : ""}`}
+          className={`skills-htop appear ${visible ? "visible" : ""}`}
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(3, 1fr)",
@@ -78,6 +78,12 @@ export default function Skills() {
             </div>
           ))}
         </div>
+
+        <style>{`
+          @media (max-width: 640px) {
+            .skills-htop { grid-template-columns: 1fr !important; }
+          }
+        `}</style>
 
         {/* ── Skill card grid ── */}
         <div

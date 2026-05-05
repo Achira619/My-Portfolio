@@ -141,9 +141,10 @@ export default function Goals() {
         </div>
 
         <div
+          className="goals-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
             gap: 18,
           }}
         >
@@ -152,6 +153,12 @@ export default function Goals() {
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .goals-grid { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
     </section>
   );
 }

@@ -1,4 +1,6 @@
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react"
+
 
 export const metadata = {
   title: "Achira Medagedara | SRE & DevOps Engineer",
@@ -22,7 +24,10 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
       </head>
-      <body>{children}</body>
+      <body>{children}
+        <Analytics /> 
+      </body>
     </html>
   );
 }
+

@@ -11,7 +11,7 @@ export const education = [
     status: "active",
     gpa: null,                          // add when available
     location: "Colombo, Sri Lanka",
-    path: "/edu/university/iit",
+    path: "/edu/university/Westminster",
     highlights: [
       " Applied classroom knowledge in real software projects through CorpoVinculo contributions.",
       "Built strong foundations in algorithms, databases, OOP, and operating systems.",
@@ -41,7 +41,7 @@ export const education = [
   status: "completed", // "active" | "completed"
   gpa: null,
   location: "Colombo, Sri Lanka ",
-  path: "/edu/category/name",
+  path: "/edu/Foundation/IIT",
   highlights: [
     "Developed core programming and analytical problem-solving skills.",
     "Gained exposure to Agile development practices through workshops.",

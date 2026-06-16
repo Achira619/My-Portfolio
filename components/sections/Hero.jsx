@@ -134,6 +134,25 @@ export default function Hero() {
           </span>
         </div>
 
+        {/* ── Terminal nav hint ── */}
+        <p
+          style={{
+            fontFamily: "var(--font-mono)",
+            fontSize: "clamp(9px, 1.2vw, 11px)",
+            color: "var(--muted)",
+            letterSpacing: "0.04em",
+            marginBottom: "clamp(14px, 3vw, 20px)",
+            opacity: show ? 1 : 0,
+            animation: show ? "slide-up 0.6s 0.3s ease both" : "none",
+          }}
+        >
+          <span style={{ color: "var(--g3)" }}># </span>
+          this site is navigated via the terminal — press{" "}
+          <span style={{ color: "var(--g)" }}>Ctrl/Cmd+K</span> or open the{" "}
+          <span style={{ color: "var(--g)" }}>&gt;_ terminal</span> tab on the right edge,
+          then type <span style={{ color: "var(--cyan)" }}>help</span>
+        </p>
+
         {/* ── Name ── */}
         <h1
           style={{

@@ -1,6 +1,7 @@
 "use client";
 
 import Footer         from "@/components/layout/Footer";
+import StatusBar      from "@/components/layout/StatusBar";
 import CommandPalette from "@/components/ui/CommandPalette";
 import Hero           from "@/components/sections/Hero";
 import About          from "@/components/sections/About";
@@ -21,6 +22,7 @@ export default function Home() {
       <div className="scanline" aria-hidden="true" />
 
       <div style={{ position: "relative", zIndex: 1 }}>
+        <StatusBar />
         <CommandPalette />
         <main>
           <Hero />

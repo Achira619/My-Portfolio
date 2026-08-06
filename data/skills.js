@@ -48,7 +48,6 @@ export const skillCategories = [
     skills: [
     { name: "Oracle SQL",          level: 78, pkg: "oracle-sql" },
     { name: "DB Design",           level: 70, pkg: "schema-tools" },
-    { name: "Query Optimization",  level: 58, pkg: "explain-analyze" },
     ],
   },
 ];

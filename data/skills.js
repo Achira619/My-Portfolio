@@ -12,7 +12,7 @@ export const skillCategories = [
     skills: [
       { name: "Java",       level: 80, pkg: "openjdk-21"  },
       { name: "Python",     level: 72, pkg: "python3.12"  },
-      { name: "JavaScript", level: 68, pkg: "node-20-lts" },
+      { name: "Bash",       level: 60, pkg: "bash-5.2"    },
     ],
   },
   {
@@ -36,7 +36,7 @@ export const skillCategories = [
     skills: [
       { name: "AWS Core",     level: 50, pkg: "awscli-2"       },
       { name: "Networking",   level: 60, pkg: "net-tools"       },
-      { name: "System Design",level: 55, pkg: "architecture-v1" },
+      ,
     ],
   },
   {
@@ -46,9 +46,9 @@ export const skillCategories = [
     color: "#6a00ff",
     icon: "⊞",
     skills: [
-      { name: "SQL",              level: 78, pkg: "postgresql-16" },
-      { name: "DB Design",        level: 70, pkg: "schema-tools"  },
-      { name: "Query Optimization",level: 58, pkg: "explain-analyze"},
+    { name: "Oracle SQL",          level: 78, pkg: "oracle-sql" },
+    { name: "DB Design",           level: 70, pkg: "schema-tools" },
+    { name: "Query Optimization",  level: 58, pkg: "explain-analyze" },
     ],
   },
 ];

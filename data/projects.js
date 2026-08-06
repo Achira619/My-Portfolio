@@ -96,7 +96,7 @@ export const projects = [
     "Calculates and displays uptime percentage per service",
     "Sends alerts when a monitored service goes down",
   ],
-  tech: ["Python"],
+  tech: ["Python","Bash", "Linux"],
   color: "var(--red)",
   repoUrl: "",
 }

@@ -63,10 +63,6 @@ export const certifications = [
   tags: ["TypeScript", "Programming", "Fundamentals"],
 
   },
-
-
-
-  // ── IN PROGRESS ──────────────────────────────────────────────
   {
   id: "Python-UOM",
   name: "Python for beginners certificate",
@@ -79,5 +75,23 @@ export const certifications = [
   color: "var(--g)",
   icon: "🐍",
   tags: ["Python Fundamentals "],
+},
+
+
+{
+  id: "KodeKloud-linux",
+  name: "KodeKloud-lab Linux ",
+  issuer: "KodeKloud",
+  issued: "2026",
+  expires: null,
+  credentialId: "862a6d9e-25f9-4baf-b2b5-dbea67d532d3",
+  verifyUrl: "https://www.linkedin.com/in/achira-medagedara/overlay/Certifications/1459528206/treasury/?profileId=ACoAAEc4lg8BnpkbYjIvmt2VhhEu36dxdYiWi1w",
+  status: "earned",
+  color: "var(--g)",
+  icon: "🐧",
+  tags: ["Linux", "Labs"],
 }
+
+
+
 ];

@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:22'
+            reuseNode true
+        }
+    }
 
     stages {
         stage('Install') {

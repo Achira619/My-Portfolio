@@ -14,7 +14,7 @@ pipeline {
                         -w /app \
 
                         node:22 \
-                        sh "npm install && npm run build"     '''
+                        sh -c "npm install && npm run build"     '''
             }
         }
 

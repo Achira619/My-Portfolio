@@ -2,21 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Install') {
             steps {
-                sh '/usr/local/bin/docker run --rm -v "$WORKSPACE:/app" -w /app node:22 sh -c "npm install && npm run build"'
+                sh 'npm ci'
             }
         }
 
         stage('Test') {
             steps {
-                sh '/usr/local/bin/docker run --rm -v "$WORKSPACE:/app" -w /app node:22 sh -c "npm test -- --run"'
+                sh 'npm test'
             }
         }
 
-        stage('Docker Build') {
+        stage('Build') {
             steps {
-                sh '/usr/local/bin/docker build -t my-portfolio .'
+                sh 'npm run build'
             }
         }
     }

@@ -2,6 +2,5 @@ node_modules
 .next
 .git
 .gitignore
-Dockerfile
 README.md
 npm-debug.log

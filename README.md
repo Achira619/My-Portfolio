@@ -1,4 +1,4 @@
-# Achira Medagedaras — Portfolio
+# Achira Medagedara — Portfolio
 
 > Linux-themed personal portfolio for SRE / DevOps internship applications.
 > Built with **Next.js 14**, **Tailwind CSS**, and pure CSS animations.

@@ -3,21 +3,37 @@ pipeline {
 
     stages {
 
-        stage('Build & Test') {
+        stage('Install') {
             steps {
-                sh '''
-                    /usr/local/bin/docker run --rm \
-                        -v "$WORKSPACE:/app" \
-                        -w /app \
-                        node:22 \
-                        sh -c "npm install && npm run build && npm test"
-                '''
+                sh 'npm ci'
             }
         }
 
-        stage('Docker Build') {
+        stage('Test') {
             steps {
-                sh '/usr/local/bin/docker build -t my-portfolio .'
+                sh 'npm test'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+
+        stage('Deploy to Vercel') {
+            steps {
+                withCredentials([
+                    string(
+                        credentialsId: 'vercel-token',
+                        variable: 'VERCEL_TOKEN'
+                    )
+                ]) {
+                    sh '''
+                        npm install -g vercel
+                        vercel deploy --prod --yes --token "$VERCEL_TOKEN"
+                    '''
+                }
             }
         }
     }

@@ -5,6 +5,8 @@ pipeline {
 
         stage('Install') {
             steps {
+                sh 'npm install -g npm@latest'
+                sh 'npm update'
                 sh 'npm ci'
             }
         }
